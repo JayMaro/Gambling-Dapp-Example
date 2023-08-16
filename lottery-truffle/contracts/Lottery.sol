@@ -24,5 +24,10 @@ contract Lottery {
         require(msg.value >= .01 ether, "msg.value should be greater than or equal to 0.01 ether");
         players.push(payable(msg.sender));
     }
+
+    // 랜덤값 반환 - 블록 내부의 값을 이용한 랜덤값 생성, 안전하지 않음
+    function getRandomNumberV1() public view returns (uint256) {
+        return uint256(keccak256(abi.encodePacked(owner, block.timestamp)));
+    }
 }
 
