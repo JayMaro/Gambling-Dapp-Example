@@ -37,6 +37,7 @@ contract Lottery {
         uint256 index = getRandomNumberV1() % players.length;
 
         // reentrancy attack을 방지하기 위해 다른 contract 호출 전 상태 변경을 진행해야 한다.
+        // Checks-Effects-Interactions Pattern
         lotteryHistory[lotteryId] = players[index];
         lotteryId++;
 
